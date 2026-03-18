@@ -28,6 +28,7 @@ library(htmltools) # add popups in interactive map
 #install.packages("ggmagnify", repos = c("https://hughjonesd.r-universe.dev", "https://cloud.r-project.org"))
 library(ggmagnify) # to add zooms
 library(magick) #to add icon in map
+library(patchwork) # to make insert and save as SVG
 library(svglite) # to save as SVG
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
