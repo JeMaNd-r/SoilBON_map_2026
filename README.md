@@ -1,6 +1,5 @@
 # Soil BON Project – Map of Sampling Locations
 
----
 
 ## Overview
 
@@ -14,7 +13,6 @@ The project outputs include:
 
 > **Disclaimer:** The boundaries and names shown on these maps do not imply official endorsement or acceptance by the project.
 
----
 
 ## Author & Maintainers
 
@@ -22,7 +20,6 @@ The project outputs include:
 - **Created:** 2026-03-16  
 - **Last Updated:** 2026-03-18  
 
----
 
 ## Features
 
@@ -33,7 +30,6 @@ The project outputs include:
 - Color scheme consistent with project logo colors  
 - Export-ready in **SVG** for high-quality vector graphics  
 
----
 
 ## Requirements
 
@@ -65,7 +61,6 @@ install.packages(
 )
 ```
 
----
 
 ## Data
 
@@ -77,7 +72,6 @@ install.packages(
 
 Ensure the paths to data and logo are correct before running scripts.
 
----
 
 ## Usage
 
@@ -104,7 +98,6 @@ ggsave(
 )
 ```
 
----
 
 ## Notes & Tips
 
@@ -112,7 +105,6 @@ ggsave(
 - When exporting SVG, some grobs (e.g., geom_magnify_tile()) may not render correctly — consider using PNG or constructing insets via patchwork for full SVG compatibility.
 - Longitude and latitude must match the map CRS for rectangles or zoom highlighting.
 
----
 
 ## License
 
