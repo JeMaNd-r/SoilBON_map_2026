@@ -28,7 +28,6 @@ library(htmltools) # add popups in interactive map
 #install.packages("ggmagnify", repos = c("https://hughjonesd.r-universe.dev", "https://cloud.r-project.org"))
 library(ggmagnify) # to add zooms
 library(magick) #to add icon in map
-library(patchwork) # to make insert and save as SVG
 library(svglite) # to save as SVG
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -255,31 +254,22 @@ ggsave(filename = paste0("Map_sites_splayed_", gsub("-", "", Sys.Date()),".svg")
 plot_l <- leaflet() %>%
   addTiles() %>%
   setView(lng = -3.7, lat = 40.4, zoom = 1) %>%
-  addCircleMarkers(data = data %>% 
+  addCircleMarkers(data = clean_1 %>% 
                      rename(lng = Longitude, lat = Latitude) %>%
                      filter(!is.na(lng) & !is.na(lat)) %>%
                      filter(is.na(`Conservation area`)) %>%
                      dplyr::select(lng, lat, ID),
-                   color = "black",
+                   color = "#018571",
                    radius = 5,
                    popup = ~htmlEscape(ID)) %>%
-  addCircleMarkers(data = data %>% 
+  addCircleMarkers(data = clean_2 %>% 
                      rename(lng = Longitude, lat = Latitude) %>%
                      filter(!is.na(lng) & !is.na(lat)) %>%
-                     filter(`Conservation area` == "Unprotected site") %>%
                      dplyr::select(lng, lat, ID),
                    color = "#a6611a",
                    radius = 5,
-                   popup = ~htmlEscape(ID)) %>% 
-  addCircleMarkers(data = data %>% 
-                     rename(lng = Longitude, lat = Latitude) %>%
-                     filter(!is.na(lng) & !is.na(lat)) %>%
-                     filter(`Conservation area` == "Protected site") %>%
-                     dplyr::select(lng, lat, ID),
-                   color = "#018571",
-                   radius = 5,
-                   popup = ~htmlEscape(ID)) 
+                   popup = ~htmlEscape(ID))
 plot_l
 
-saveWidget(plot_l, file = paste0("../_Figures/Mapping/Map_sites_fieldrec_interactive_",
+saveWidget(plot_l, file = paste0("Map_sites_fieldrec_interactive_",
                                  gsub("-", "", Sys.Date()),".html"))
